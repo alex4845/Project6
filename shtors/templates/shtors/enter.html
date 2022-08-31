@@ -1,0 +1,18 @@
+{% extends 'shtors/base.html'%}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content %}
+
+    <form class="d-flex" method="post">
+        {%  csrf_token %}
+        <p><input class="form-control me-2" type="text" placeholder="ваш login" name="name"></p>
+        <p><input class="form-control me-2" type="password" placeholder="пароль" name="password"></p>
+
+
+        <input class="btn btn-outline-success" type="submit" value="Войти">
+    </form>
+
+{% endblock %}

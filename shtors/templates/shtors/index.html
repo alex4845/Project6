@@ -1,0 +1,32 @@
+
+{% extends 'shtors/base.html'%}
+
+{% block title %}
+Главная шторы
+
+{% endblock %}
+
+{% block content %}
+
+<h4>
+    Наша мастерская изготовит шторы для вашего дома и любые текстильные изделия под заказ по вашему желанию.
+    Индивидуальный подход. Дизайн-проект непосредственно под ваш интерьер.
+    Первая консультация дизайнера бесплатно.
+
+</h4>
+ <div>
+
+        {% for i in list1s %}
+            <h2><a class="btn btn-outline-success" href="{% url 'Категории' pk=i.pk %}">{{ i }}</a></h2>
+        {% endfor %}
+ </div>
+
+ <div>
+        <img src="/media/shtors/IMG_20220808_165732.jpg" class="img-responsive" height="400px">
+
+
+
+ </div>
+
+{% endblock %}
+

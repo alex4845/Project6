@@ -1,0 +1,17 @@
+
+{% extends 'shtors/base.html'%}
+
+{% block title %}
+Категории
+{% endblock %}
+
+{% block content %}
+<h3>{{ category }}:</h3>
+<div>
+        {% for i in list2s %}
+        <h2><a class="btn btn-outline-success" href="{% url 'Категории2' pk=i.pk %}">-  {{ i }}</a></h2>
+
+        {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'shtors/base.html'%}
+
+{% block title %}
+Галерея
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ category }}: Примеры наших работ</h3>
+<div>
+    {% for i in list3s %}
+    <img src="{{ i.img1.url }}" height="500px">
+
+    <img src="{{ i.img2.url }}" height="500px">
+
+    <img src="{{ i.img3.url }}" height="500px">
+
+    {% endfor %}
+
+</div>
+{% endblock %}
+
