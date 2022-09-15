@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+{% if username %}
+    <h2>Неправильно введен логин или пароль</h2>
+{% endif %}
+
+
 
     <form class="d-flex" method="post">
         {%  csrf_token %}

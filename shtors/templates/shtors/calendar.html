@@ -20,9 +20,13 @@
   </script>
 </head>
 <body>
-
-<p>Date: <input type="text" id="datepicker"></p>
-
-
+<form class="d-flex" method="post">
+        {%  csrf_token %}
+    <p>Date: <input type="text" id="datepicker" name="date"></p>
+    <input class="btn btn-outline-success" type="submit" value="Заказать">
+</form>
 </body>
+{%if date %}
+    <h2>Вы заказали выезд дизайнера на {{ date }}</h2>
+{% endif %}
 {% endblock %}

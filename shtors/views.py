@@ -46,7 +46,7 @@ def enter_user(request):
             login(request, user)
             return redirect("Главная")
         else:
-            return redirect("Вход")
+            return render(request, "shtors/enter.html", {"username": username})
 
 
 def exit_user(request):
@@ -57,4 +57,5 @@ def calendar(request):
     if request.method == "GET":
         return render(request, "shtors/calendar.html")
     if request.method == "POST":
-        pass
+        date = request.POST["date"]
+        return render(request, "shtors/calendar.html", {"date": date})
