@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block content %}
-
+{% if us %}
+    <h2>Такой пользователь уже есть</h2>
+{% endif %}
 <form class="d-flex" method="post">
     {%  csrf_token %}
     <p><input class="form-control me-2" type="text" placeholder="ваш login" name="name"></p>
     <p><input class="form-control me-2" type="password" placeholder="пароль" name="password"></p>
-    <p><input class="form-control me-2" type="post" placeholder="почта" name="post"></p>
+    <p><input class="form-control me-2" type="text" placeholder="почта" name="post"></p>
     <input class="btn btn-outline-success" type="submit" value="Зарегистрироваться и войти">
 </form>
 {% endblock %}

@@ -26,11 +26,12 @@ def registration(request):
     if request.method == "POST":
         username = request.POST["name"]
         password = request.POST["password"]
+        post = request.POST["post"]
         try:
             us = User.objects.get(username=username)
-            return redirect("Главная")
+            return render(request, "shtors/registration.html", {"us": us})
         except:
-            user = User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password, email=post)
             login(request, user)
             return redirect("Главная")
 
