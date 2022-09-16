@@ -1,16 +1,17 @@
 {% extends 'shtors/base.html'%}
-
+{% load static %}
 {% block title %}
 Вход
 {% endblock %}
 
 {% block content %}
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Datepicker - Default functionality</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link href="{% static 'shtors/style.css' %}" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script>
@@ -18,6 +19,7 @@
     $( "#datepicker" ).datepicker();
   } );
   </script>
+
 </head>
 <body>
 <form class="d-flex" method="post">
@@ -26,7 +28,9 @@
     <input class="btn btn-outline-success" type="submit" value="Заказать">
 </form>
 </body>
-{%if date %}
-    <h2>Вы заказали выезд дизайнера на {{ date }}</h2>
+{% if b %}
+    <h2>{{ name }}, к сожалению, этот день занят, выберите другой</h2>
+{% elif date %}
+    <h2>{{ name }}, Вы заказали выезд дизайнера на {{ date }} </h2>
 {% endif %}
 {% endblock %}

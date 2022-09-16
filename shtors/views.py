@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from shtors.models import List1, List2
+from shtors.models import List1, List2, User_list
 
 
 def main_page(request):
@@ -54,8 +54,16 @@ def exit_user(request):
     return redirect("Вход")
 
 def calendar(request):
+
     if request.method == "GET":
         return render(request, "shtors/calendar.html")
     if request.method == "POST":
         date = request.POST["date"]
-        return render(request, "shtors/calendar.html", {"date": date})
+        name = request.user.username
+        try:
+            b = User_list.objects.get(date_go=date)
+            return render(request, "shtors/calendar.html", {"b": b, "name": name})
+        except:
+            a = User_list(name=name, date_go=date)
+            a.save()
+            return render(request, "shtors/calendar.html", {"date": date, "name": name})

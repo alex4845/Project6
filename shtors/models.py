@@ -20,8 +20,8 @@ class List3(models.Model):
     list2 = models.ForeignKey(List2, on_delete=models.PROTECT)
 
 class User_list(models.Model):
-    name = models.CharField(max_length=25)
-    post = models.CharField(max_length=25)
-    date_reg = models.DateTimeField(auto_now_add=True)
-    date_go = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=25, null=False)
+    date_go = models.CharField(max_length=25)
 
+    def __str__(self):
+        return self.date_go
