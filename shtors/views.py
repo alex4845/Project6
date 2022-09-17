@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from shtors.models import List1, List2, User_list, User_question
+from shtors.telegramm import send_message
 
 
 def main_page(request):
@@ -79,8 +80,11 @@ def question(request):
         if request.user.is_authenticated:
             ques = request.POST["question"]
             name = request.user.username
+
             a = User_question(name=name, question=ques)
             a.save()
+            message = "*СООБЩЕНИЕ  С САЙТА*:" + "\n" + "*ИМЯ*: " +str(name) + "\n" + "*ВОПРОС*: " + str(ques)
+            send_message(message)
             return render(request, "shtors/question.html", {"ques": ques})
         else:
             b = "хрен"
