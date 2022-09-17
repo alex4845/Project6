@@ -1,0 +1,25 @@
+{% extends 'shtors/base.html'%}
+
+{% block title %}
+Вопрос
+{% endblock %}
+
+{% block content %}
+
+
+<form method="post">
+    {%  csrf_token %}
+
+ <div class="form-group">
+    <label for="a">Задайте свой вопрос и с вами свяжутся в ближайшее время</label>
+    <textarea class="form-control" id="a" rows="3" name="question"></textarea>
+  </div>
+<input class="btn btn-outline-success" type="submit" value="Отправить вопрос">
+    </form>
+
+{% if ques %}
+    <h2>Ваш вопрос отправлен дизайнеру</h2>
+{% elif b %}
+    <h2>Вопрос могут задать только зарегистрированные пользователи</h2>
+{% endif %}
+{% endblock %}

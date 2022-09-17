@@ -25,3 +25,10 @@ class User_list(models.Model):
 
     def __str__(self):
         return self.date_go
+
+class User_question(models.Model):
+    name = models.CharField(max_length=25, null=False)
+    question = models.TextField(max_length=300)
+
+    def __str__(self):
+        return self.name

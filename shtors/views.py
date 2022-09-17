@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from shtors.models import List1, List2, User_list
+from shtors.models import List1, List2, User_list, User_question
 
 
 def main_page(request):
@@ -21,6 +21,7 @@ def in_list2(request, pk):
     return render(request, "shtors/in_list2.html", {"category": category, "list3s": list3s})
 
 def registration(request):
+
     if request.method == "GET":
         return render(request, "shtors/registration.html")
     if request.method == "POST":
@@ -36,6 +37,7 @@ def registration(request):
             return redirect("Главная")
 
 def enter_user(request):
+
     if request.method == "GET":
         return render(request, "shtors/enter.html")
     if request.method == "POST":
@@ -67,3 +69,19 @@ def calendar(request):
             a = User_list(name=name, date_go=date)
             a.save()
             return render(request, "shtors/calendar.html", {"date": date, "name": name})
+
+def question(request):
+
+    if request.method == "GET":
+        return render(request, "shtors/question.html")
+    if request.method == "POST":
+
+        if request.user.is_authenticated:
+            ques = request.POST["question"]
+            name = request.user.username
+            a = User_question(name=name, question=ques)
+            a.save()
+            return render(request, "shtors/question.html", {"ques": ques})
+        else:
+            b = "хрен"
+            return render(request, "shtors/question.html", {"b": b})
